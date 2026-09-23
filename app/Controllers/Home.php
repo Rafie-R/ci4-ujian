@@ -12,7 +12,9 @@ class Home extends BaseController
 
         $data = [
             'title'          => 'Ashraf Betutu - Otentik Kuliner Ayam Betutu Khas Bali',
-            'featuredMenus'  => $menuModel->where('is_available', 1)->orderBy('id', 'ASC')->findAll(6),
+            'featuredMenus'  => $menuModel->orderBy('is_available', 'DESC')->orderBy('id', 'ASC')->findAll(6),
+            'signatureMenu'  => $menuModel->where('slug', 'ayam-betutu-original')->first() ?? $menuModel->first(),
+            'totalMenuCount' => $menuModel->countAllResults(),
         ];
 
         return view('home/index', $data);
