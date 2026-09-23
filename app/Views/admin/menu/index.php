@@ -44,13 +44,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="w-12 h-12 rounded-lg bg-gray-100 border border-gray-200 overflow-hidden flex items-center justify-center shrink-0">
-                                    <?php if (! empty($menu['image']) && str_starts_with($menu['image'], 'http')) : ?>
-                                        <img src="<?= esc($menu['image']) ?>" alt="<?= esc($menu['name']) ?>" class="w-full h-full object-cover">
-                                    <?php else : ?>
-                                        <div class="w-full h-full bg-accent/10 flex items-center justify-center text-accent text-xs font-serif font-bold">
-                                            Betutu
-                                        </div>
-                                    <?php endif; ?>
+                                    <img src="<?= menu_image_url($menu['image']) ?>" alt="<?= esc($menu['name']) ?>" class="w-full h-full object-cover">
                                 </div>
                             </td>
                             <td class="px-6 py-4">

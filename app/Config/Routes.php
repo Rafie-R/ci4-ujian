@@ -7,6 +7,7 @@ use CodeIgniter\Router\RouteCollection;
 // Public Routes
 $routes->get('/', 'Home::index');
 $routes->get('menu', 'Menu::index');
+$routes->get('menu/(:segment)', 'Menu::detail/$1');
 
 // Admin Auth Routes (Guest)
 $routes->get('admin/login', 'Admin\Auth::login');

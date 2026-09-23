@@ -57,12 +57,10 @@
                 <div class="relative mx-auto max-w-md rounded-3xl p-1 bg-gradient-to-tr from-primary via-accent-light to-primary shadow-2xl">
                     <div class="bg-accent-dark rounded-[22px] p-6 text-center overflow-hidden relative">
                         <!-- Betutu Visual Showcase Plate -->
-                        <div class="w-48 h-48 sm:w-60 sm:h-60 mx-auto rounded-full bg-gradient-to-tr from-accent to-accent-light border-4 border-primary/60 flex items-center justify-center shadow-inner relative group">
-                            <div class="text-center p-4">
-                                <span class="text-4xl block mb-2">🍗</span>
-                                <span class="font-serif font-bold text-xl text-primary block leading-tight">Ashraf Betutu</span>
-                                <span class="text-[11px] text-gray-300 uppercase tracking-widest block mt-1">Special Edition</span>
-                            </div>
+                        <div class="w-48 h-48 sm:w-60 sm:h-60 mx-auto rounded-full bg-gradient-to-tr from-accent to-accent-light border-4 border-primary/60 overflow-hidden shadow-2xl relative group">
+                            <img src="<?= menu_image_url('ayam-betutu-original.jpg') ?>" 
+                                 alt="Ashraf Betutu Special" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         </div>
 
                         <!-- Floating Badges -->
@@ -104,15 +102,8 @@
                 <?php foreach ($featuredMenus as $menu) : ?>
                     <div class="bg-[#FCFBF8] rounded-2xl border border-gray-200/80 overflow-hidden shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 flex flex-col group">
                         <!-- Image Container -->
-                        <div class="h-48 bg-gradient-to-tr from-accent to-accent-light relative overflow-hidden flex items-center justify-center">
-                            <?php if (! empty($menu['image']) && str_starts_with($menu['image'], 'http')) : ?>
-                                <img src="<?= esc($menu['image']) ?>" alt="<?= esc($menu['name']) ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                            <?php else : ?>
-                                <div class="text-center p-4">
-                                    <span class="text-5xl block mb-1">🍗</span>
-                                    <span class="text-xs text-primary font-serif font-bold tracking-wider uppercase">Ashraf Betutu</span>
-                                </div>
-                            <?php endif; ?>
+                        <a href="<?= base_url('menu/' . $menu['slug']) ?>" class="block h-48 bg-gradient-to-tr from-accent to-accent-light relative overflow-hidden">
+                            <img src="<?= menu_image_url($menu['image']) ?>" alt="<?= esc($menu['name']) ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
 
                             <!-- Category Badge -->
                             <div class="absolute top-3 left-3">
@@ -133,14 +124,16 @@
                                     </span>
                                 <?php endif; ?>
                             </div>
-                        </div>
+                        </a>
 
                         <!-- Content -->
                         <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
                             <div>
-                                <h3 class="font-serif font-bold text-xl text-gray-900 group-hover:text-accent transition-colors">
-                                    <?= esc($menu['name']) ?>
-                                </h3>
+                                <a href="<?= base_url('menu/' . $menu['slug']) ?>">
+                                    <h3 class="font-serif font-bold text-xl text-gray-900 group-hover:text-accent transition-colors">
+                                        <?= esc($menu['name']) ?>
+                                    </h3>
+                                </a>
                                 <p class="text-xs text-gray-500 mt-2 line-clamp-3 leading-relaxed">
                                     <?= esc($menu['description'] ?: 'Hidangan lezat Ayam Betutu khas Bali kaya bumbu rempah tradisional.') ?>
                                 </p>
@@ -153,8 +146,8 @@
                                         Rp <?= number_format($menu['price'], 0, ',', '.') ?>
                                     </span>
                                 </div>
-                                <a href="<?= base_url('menu') ?>" class="px-4 py-2 rounded-lg bg-accent text-white hover:bg-accent-light text-xs font-semibold transition-colors shadow">
-                                    Pesan Menu
+                                <a href="<?= base_url('menu/' . $menu['slug']) ?>" class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-light text-accent-dark font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
+                                    Lihat Detail
                                 </a>
                             </div>
                         </div>
